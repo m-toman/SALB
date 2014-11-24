@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\cst_alloc.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_args.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_audio.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_cart.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_endian.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_error.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_features.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_ffeatures.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_file.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_hrg.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_item.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_lexicon.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_lts.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_lts_rewrites.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_math.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_phoneset.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_regex.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_relation.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_sigpr.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_socket.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_ss.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_string.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_sts.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_synth.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_tokenstream.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_track.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_utterance.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_utt_utils.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_val.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_val_const.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_val_defs.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_viterbi.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_voice.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cst_wave.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="include\flite.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\cmulex\cmu_lex.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\cmulex\cmu_lts_model.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\usenglish\usenglish.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\usenglish\us_ffeatures.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\usenglish\us_int_accent_cart.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\usenglish\us_int_tone_cart.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\usenglish\us_nums_cart.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\usenglish\us_phrasing_cart.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\usenglish\us_pos_cart.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\usenglish\us_regexes.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="lang\usenglish\us_text.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="src\regex\cst_regex_defs.h">
+      <Filter>source</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="lang\cmulex\cmu_lex.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\cmulex\cmu_lex_data.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\cmulex\cmu_lex_entries.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\cmulex\cmu_lts_model.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\cmulex\cmu_lts_rules.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\cmulex\cmu_postlex.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\cmu_us_kal\cmu_us_kal.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\usenglish.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_aswd.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_expand.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_ffeatures.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_gpos.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_int_accent_cart.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_int_tone_cart.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_nums_cart.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_phoneset.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_phrasing_cart.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_pos_cart.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="lang\usenglish\us_text.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hrg\cst_ffeature.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hrg\cst_item.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hrg\cst_relation.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hrg\cst_utterance.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lexicon\cst_lexicon.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lexicon\cst_lts.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\regex\cst_regex.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\regex\regexp.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stats\cst_cart.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\synth\cst_ffeatures.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\synth\cst_phoneset.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\synth\cst_synth.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\synth\cst_utt_utils.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\synth\cst_voice.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\synth\flite.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\cst_alloc.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\cst_error.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\cst_features.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\cst_string.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\cst_tokenstream.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\cst_val.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\cst_val_const.c">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\cst_val_user.c">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

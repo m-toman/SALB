@@ -1,0 +1,1 @@
+make CFLAGS='-D_WIN32'

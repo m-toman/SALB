@@ -1,0 +1,36 @@
+// htssapi.idl : IDL source for htssapi
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (htssapi.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "sapiddk.idl";
+
+[
+	object,
+	uuid(F058DAF6-40EA-45EC-955F-C3E83566DE02),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IHTSTTS : IDispatch{
+};
+[
+	uuid(6FAA24AF-98F1-4541-806B-32556675B254),
+	version(1.0),
+]
+library htssapiLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C3C2603C-4BC5-40D9-8B52-9F8AE7633408)		
+	]
+	coclass HTSTTS
+	{
+        [default] interface ISpTTSEngine;
+        interface ISpObjectWithToken;
+	};
+};
+

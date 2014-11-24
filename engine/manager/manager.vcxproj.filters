@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include\textanalysis">
+      <UniqueIdentifier>{24dfa62c-aabc-48c4-97c9-14384fc87e8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\textanalysis">
+      <UniqueIdentifier>{d93c5a4b-1ae8-4441-b03b-91aeddf22161}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Text.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TTSManager.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Synthesizer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TextAnalyzer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Label.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\common.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utils.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TTSLogger.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FliteTextAnalyzer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\HTSEngineSynthesizer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\InternalTextAnalyzer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\text\internal\include\Lexicon.h">
+      <Filter>include\textanalysis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\text\internal\include\Utterance.h">
+      <Filter>include\textanalysis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\text\internal\include\LTSTree.h">
+      <Filter>include\textanalysis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\text\internal\include\Normalizer.h">
+      <Filter>include\textanalysis</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TTSResult.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\text\internal\include\AustrianGermanNormalizer.h">
+      <Filter>include\textanalysis</Filter>
+    </ClInclude>
+    <ClInclude Include="..\text\internal\include\AlbanianNormalizer.h">
+      <Filter>include\textanalysis</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Text.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TTSManager.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Label.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Synthesizer.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextAnalyzer.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FliteTextAnalyzer.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HTSEngineSynthesizer.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TTSLogger.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\InternalTextAnalyzer.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\text\internal\src\Lexicon.cpp">
+      <Filter>source\textanalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\text\internal\src\LTSTree.cpp">
+      <Filter>source\textanalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\text\internal\src\Normalizer.cpp">
+      <Filter>source\textanalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\text\internal\src\AustrianGermanNormalizer.cpp">
+      <Filter>source\textanalysis</Filter>
+    </ClCompile>
+    <ClCompile Include="..\text\internal\src\AlbanianNormalizer.cpp">
+      <Filter>source\textanalysis</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
