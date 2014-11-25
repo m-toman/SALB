@@ -18,7 +18,7 @@ OutFile "htssapi.exe"
 !define MUI_ABORTWARNING
 
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "..\..\license.txt"
+!insertmacro MUI_PAGE_LICENSE "../../COPYING"
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES

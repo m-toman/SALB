@@ -1,0 +1,5 @@
+*.sh~
+*.tlog
+*.unsuccessfulbuild
+*.sdf
+*.exp
