@@ -82,9 +82,9 @@ inline void BuildLabelBlockB(std::stringstream& htklabel, utt::PhraseIterator& p
    }
    else {
       htklabel << "/B:";
-      htklabel << phit.GetCurrentSyllable()->stressed ? "1" : "0";
+      htklabel << (phit.GetCurrentSyllable()->stressed ? "1" : "0");
       htklabel << "-";
-      htklabel << phit.GetCurrentSyllable()->stressed ? "1" : "0";  //TODO: this should be actually accented
+      htklabel << (phit.GetCurrentSyllable()->stressed ? "1" : "0");  //TODO: this should be actually accented
       htklabel << "-";
       htklabel << phit.GetCurrentSyllable()->phones.size(); // number of phones in current syllable
       htklabel << "@";
