@@ -41,17 +41,17 @@ We also provide a free voice model of an Austrian German, male, professional spe
 <a id="facts--features" class="anchor" href="#facts--features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Facts &amp; features:</h2>
 
 <ul>
-<li>SAPI5: Distribute HTS voice models as Microsoft Windows system voice. An NSIS (<a href="http://nsis.sourceforge.net/">http://nsis.sourceforge.net/</a>) script is provided to create an installer for your system voice (x86 and x64, starting with Windows Vista).</li>
+<li>Distribute HTS voice models as Microsoft Windows system voice via SAPI5. An NSIS (<a href="http://nsis.sourceforge.net/">http://nsis.sourceforge.net/</a>) script is provided to create installers (x86 and x64, starting with Windows Vista).</li>
 <li>Text analysis for English voice models by flite (<a href="http://www.festvox.org/flite/">http://www.festvox.org/flite/</a>).</li>
-<li>Synthesis by hts_engine (<a href="http://hts-engine.sourceforge.net/">http://hts-engine.sourceforge.net/</a>).</li>
-<li>Text preprocessing for new languages can be added in C++, Lexicon and Letter-To-Sound (LTS) rules can be provided in Festival (<a href="http://www.cstr.ed.ac.uk/projects/festival/">http://www.cstr.ed.ac.uk/projects/festival/</a>) format.</li>
+<li>Parameter and waveform generation by hts_engine (<a href="http://hts-engine.sourceforge.net/">http://hts-engine.sourceforge.net/</a>).</li>
+<li>Add new languages by text preprocessing in C++ and by providing lexicon and Letter-To-Sound (LTS) rules in Festival (<a href="http://www.cstr.ed.ac.uk/projects/festival/">http://www.cstr.ed.ac.uk/projects/festival/</a>) format.</li>
 <li>Example text preprocessing as well as lexicon and LTS rules are provided for (Austrian) German.</li>
 <li>A free Austrian German voice model of a male professional speaker is included, a voice model for a female professional speaker in Scottish English will be added soon.</li>
-<li>Visual Studio project file for SAPI5 build.</li>
-<li>CMake build files.</li>
-<li>Simple command line interface for generating sound samples given text and a model file.</li>
+<li>Visual Studio 2012 solution file for the SAPI5 build included.</li>
+<li>CMake build files for everything else.</li>
+<li>Simple command line interface for generating sound samples.</li>
 <li>C++(11) API to embed in other applications.</li>
-<li>Compiles on MS Windows, Linux, Android, iOS.</li>
+<li>Successfully compiled on Windows (&gt;= Vista), Linux, Android, iOS.</li>
 </ul>
 
 <h2>
@@ -61,20 +61,22 @@ We also provide a free voice model of an Austrian German, male, professional spe
 <a id="how-can-i-create-a-new-voice-model" class="anchor" href="#how-can-i-create-a-new-voice-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>How can I create a new voice model?</h3>
 
 <p>An easy way is to use the demo packages on <a href="http://hts.sp.nitech.ac.jp/">http://hts.sp.nitech.ac.jp/</a>.
-This produces a .htsvoice file that can be used with the SALB system.</p>
+These produce htsvoice-files that can be used with the SALB system.</p>
 
 <h3>
-<a id="why-not-use-flitehts_engine" class="anchor" href="#why-not-use-flitehts_engine" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why not use flite+hts_engine?</h3>
+<a id="why-not-use-flitehts_engine-instead" class="anchor" href="#why-not-use-flitehts_engine-instead" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why not use flite+hts_engine instead?</h3>
 
-<p>Cases to consider using the SALB system instead of flite+hts_engine include:</p>
+<p>The SALB system is another layer on top of flite and hts_engine (see <a href="https://github.com/m-toman/SALB/blob/master/doc/architecture.svg">https://github.com/m-toman/SALB/blob/master/doc/architecture.svg</a>).
+You might want this additional layer if:</p>
 
 <ul>
-<li>You need a SAPI5 interface.</li>
-<li>You want to add a new language* and/or use plain text Festival lexica and LTS rules.</li>
-<li>You prefer the C++ interface.</li>
+<li>you want the SAPI5 interface.</li>
+<li>you would like to add a new language and/or use plain text Festival lexica and LTS rules*.</li>
+<li>you prefer the C++ interface.</li>
+<li>you would like to use the provided German voice model.</li>
 </ul>
 
-<p>*If you really want to do this in flite, take a look our description on adding a new language to flite here: <a href="http://sourceforge.net/p/at-flite/wiki/AddingNewLanguage/">http://sourceforge.net/p/at-flite/wiki/AddingNewLanguage/</a></p>
+<p>*Of course this is also possible in flite but a bit trickier. If you would really like to do that, take a look our description on adding a new language to flite here: <a href="http://sourceforge.net/p/at-flite/wiki/AddingNewLanguage/">http://sourceforge.net/p/at-flite/wiki/AddingNewLanguage/</a>.</p>
 
 <h3>
 <a id="how-can-i-contribute" class="anchor" href="#how-can-i-contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>How can I contribute?</h3>
