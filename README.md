@@ -1,9 +1,8 @@
-===========
-Description
-===========
+# Description
 
 The SALB system is a software framework for speech synthesis 
 using HMM based voice models built by HTS (http://hts.sp.nitech.ac.jp/).
+See a more generic description on http://m-toman.github.io/SALB/.
 
 The package currently includes:
 
@@ -27,45 +26,43 @@ This package currently includes hts_engine 1.08 for synthesis, so
 you need a (.htsvoice)-model compatible with this version.
 
 
-===================
-Directory structure
-===================
+# Directory structure
 
-api
----
+See also doc/architecture.svg.
+
+## api
+
 APIs for other language (e.g. python).
 
-cli
----
+## cli
+
 Command-Line-Interface.
 
-data
-----
-Voice models and text rules provided with the system.
+## data
 
-sapi
-----
-SAPI5 interface.
+Voice models and text rules included with the system.
 
-engine/text
------------
+## sapi
+
+SAPI5 interface code, produces htstts.dll that can be registered as a SAPI5 engine.
+
+## engine/text
+
 Text analysis modules.
-Currently flite and an internal module.
+These are currently flite and an internal module.
 
-engine/synthesis
-----------------
-Synthesis modules.
+## engine/synthesis
+
+Synthesis (parameter and waveform generation) modules.
 Currently hts_engine.
 
-engine/manager
---------------
+## engine/manager
+
 TTS engine coordinating text analysis and synthesis.
-Used as an interface for frontends (sapi, cli, api).
+Used as an interface for frontends (sapi, cli, api) or directly as API.
 
 
-======================
-Coding style guideline
-======================
+# Coding style guideline
 
 - Code formatting is done using astyle (http://astyle.sourceforge.net/) using the provided astyle config file (astyle.config)
 - Naming conventions for classes and methods:
