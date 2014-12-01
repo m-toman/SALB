@@ -77,7 +77,7 @@ TTSResultPtr HTSEngineSynthesizer::SynthesizeLabels(const FragmentPropertiesPtr&
       if (i >> pitch) {
          //TODO: this is not exactly what we want
          //HTS_Engine_set_alpha(&engine, pitch);
-         HTS_Engine_add_half_tone( &engine, pitch );
+         HTS_Engine_add_half_tone(&engine, pitch);
       }
    }
 

@@ -61,9 +61,6 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="htssapi.rgs">
       <Filter>Resource Files</Filter>
     </None>

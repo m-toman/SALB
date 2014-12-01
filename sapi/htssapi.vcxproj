@@ -292,9 +292,6 @@
     <ResourceCompile Include="htssapi.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="htssapi.def" />
     <None Include="htssapi.rgs" />
     <None Include="HTSTTS.rgs" />

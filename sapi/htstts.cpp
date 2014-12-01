@@ -12,7 +12,7 @@ using namespace htstts;
 
 static double ConvertSapiRate(int r);
 
-static TTSManager ttsManager;      
+static TTSManager ttsManager;
 
 /******************************************************************************
 * HTSTTS Constructor
@@ -111,29 +111,29 @@ STDMETHODIMP HTSTTS::GetOutputFormat(const GUID* pTargetFormatId,
                                      GUID* pDesiredFormatId,
                                      WAVEFORMATEX** ppCoMemDesiredWaveFormatEx) {
 
+   //return SpConvertStreamFormatEnum(SPSF_48kHz16BitMono,
+   //                                 pDesiredFormatId,
+   //                                 ppCoMemDesiredWaveFormatEx);
+   WAVEFORMATEX* wfx;
 
-   //TODO: return something reasonable that the synthesizer delivers
-   //                     or resample our synthesized data
-   //                     or tell the synthesizer what to deliver
-   return SpConvertStreamFormatEnum(SPSF_48kHz16BitMono,
-                                    pDesiredFormatId,
-                                    ppCoMemDesiredWaveFormatEx);
+   TTSResultPtr result = ttsManager.SynthesizeTextFragment(
+                            TextFragmentPtr(new TextFragment("", this->voiceProperties)));
 
-   /*
-   if ((wfx = (WAVEFORMATEX *)CoTaskMemAlloc(sizeof(*wfx))) == NULL)
-   return E_OUTOFMEMORY;
+   if ((wfx = (WAVEFORMATEX*)CoTaskMemAlloc(sizeof(*wfx))) == NULL) {
+      return E_OUTOFMEMORY;
+   }
    memset(wfx, 0, sizeof(*wfx));
    wfx->nChannels = 1;
-   wfx->nSamplesPerSec = get_param_int(curr_vox->features, "sample_rate", 48000);
+   wfx->nSamplesPerSec = result->GetSamplingRate();
    wfx->wFormatTag = WAVE_FORMAT_PCM;
    wfx->wBitsPerSample = 16;
-   wfx->nBlockAlign = wfx->nChannels*wfx->wBitsPerSample/8;
-   wfx->nAvgBytesPerSec = wfx->nSamplesPerSec*wfx->nBlockAlign;
+   wfx->nBlockAlign = wfx->nChannels * wfx->wBitsPerSample / 8;
+   wfx->nAvgBytesPerSec = wfx->nSamplesPerSec * wfx->nBlockAlign;
 
    *pDesiredFormatId = SPDFID_WaveFormatEx;
    *ppCoMemDesiredWaveFormatEx = wfx;
-   */
-   //return S_OK;
+
+   return S_OK;
 }
 
 
@@ -246,7 +246,7 @@ HTSTTS::Speak(DWORD dwSpeakFlags,
 
          LOG_DEBUG("[Speak] Writing buffer");
 
-         //- a lot of ugly code incoming again
+         //- ugly code incoming again
          //- unfortunately we have to prebuffer the whole sample as the SAPI write
          //- function does not work on all tested systems
          //- when single samples (not bytes!) are written.
