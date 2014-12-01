@@ -59,7 +59,10 @@ void prune_rules(const std::string& rulesfile, const std::string& outfile) {
       lts.Read(rulesstream);
       rulesstream.close();
    }
-   //TODO else
+   else {
+      std::cerr << "Could not open rules file." << std::endl;
+      return;
+   }
 
    // now go through lex again and prune using LTS
    std::ifstream rulesstream2(rulesfile);
@@ -100,7 +103,7 @@ void prune_rules(const std::string& rulesfile, const std::string& outfile) {
          }
       }
 
-      //TODO: probably attach rest of file?
+      // probably attach rest of file?
 
       outstream.close();
       rulesstream2.close();

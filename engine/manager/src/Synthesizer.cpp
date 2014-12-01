@@ -17,7 +17,7 @@
 namespace htstts {
 
 SynthesizerPtr Synthesizer::NewSynthesizer(const std::string& type) {
-   //TODO: currently we always return an hts_engine synthesizer
+   // once we have other synthesizers, add them here 
    return SynthesizerPtr(new HTSEngineSynthesizer());
 }
 

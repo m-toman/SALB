@@ -21,7 +21,6 @@ namespace htstts {
 
 namespace utt {
 
-//TODO: move label building to another file?
 /**
 * Build Label Quin Phone Block
 **/
@@ -94,7 +93,7 @@ inline void BuildLabelBlockB(std::stringstream& htklabel, utt::PhraseIterator& p
       pix = phit.GetSyllableIndexInPhrase();
       htklabel << (pix + 1) << "-" << (phit.GetSyllablesInPhrase() - pix);
       htklabel << "#";
-      //TODO a lot of stuff missing
+      //TODO still some stuff missing
       //htklabel << "x-x$x-x!x-x;x-x";
       htklabel << "|0";   //TODO: name of vowel of current syllable
    }
@@ -159,7 +158,7 @@ inline void BuildLabelBlockE(std::stringstream& htklabel, utt::PhraseIterator& p
       htklabel << (pix + 1) << "+" << (phit.GetPhrase()->words.size() - pix);
       htklabel << "&";
 
-      //TODO a lot of stuff missing
+      //TODO still some stuff missing
    }
 }
 
@@ -249,8 +248,6 @@ inline void BuildLabels(utt::PhrasePtr phrase, const LabelsPtr& labels, const Te
       BuildLabelBlockH(htklabel, phit);
       BuildLabelBlockI(htklabel, phit);
       BuildLabelBlockJ(htklabel, phit);
-
-      //std::cout << htklabel.str() << std::endl;
 
       LabelPtr tmpLabel = std::make_shared<HTKOnlyLabel>(htklabel.str());
       tmpLabel->SetTextFragment(fragment);

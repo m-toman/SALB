@@ -39,7 +39,7 @@ TTSResultPtr HTSEngineSynthesizer::SynthesizeLabels(const FragmentPropertiesPtr&
    }
 
    //- model to use changed? load model
-   //- TODO: cache models
+   // probably think about some caching mechanism.
    std::string& path = (*properties)[PROPERTY_KEY_VOICE_PATH];
    if (path != lastModel)  {
       HTS_Engine_clear(&engine);
@@ -75,9 +75,9 @@ TTSResultPtr HTSEngineSynthesizer::SynthesizeLabels(const FragmentPropertiesPtr&
       i.imbue(std::locale::classic());
       double pitch;
       if (i >> pitch) {
-         //TODO
-         HTS_Engine_set_alpha(&engine, pitch);
-         //HTS_Engine_add_half_tone( &engine, pitch );
+         //TODO: this is not exactly what we want
+         //HTS_Engine_set_alpha(&engine, pitch);
+         HTS_Engine_add_half_tone( &engine, pitch );
       }
    }
 
@@ -94,7 +94,7 @@ TTSResultPtr HTSEngineSynthesizer::SynthesizeLabels(const FragmentPropertiesPtr&
    //- synthesize
    //- this is a big ugly hack as we need char** instead of std::string
    //- we currently use an array of pointers to the internal c_str of the label data.
-   //- this is faster but also more unsafe than copying it.
+   //- this is faster but also unsafer than copying it.
    char** labelData = new char* [ labels->size() ];
    std::vector<LabelPtr>::iterator it = labels->begin();
    for (int i = 0; it != labels->end(); ++it, ++i) {
@@ -115,11 +115,11 @@ TTSResultPtr HTSEngineSynthesizer::SynthesizeLabels(const FragmentPropertiesPtr&
    }
 
    //- store meta information
-   //TODO: additional meta information in TTS result?
+   // additional meta information in TTS result can be added here.
    result->SetSamplingRate(HTS_Engine_get_sampling_frequency(&engine));
 
    //- store labels
-   //TODO: add time information to labels?
+   // we could add time alignment information to labels here
    result->GetLabels().insert(result->GetLabels().begin(), labels->begin(), labels->end());
 
    return result;

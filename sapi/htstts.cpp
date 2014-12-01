@@ -12,7 +12,7 @@ using namespace htstts;
 
 static double ConvertSapiRate(int r);
 
-static TTSManager ttsManager;                       ///< TTSManager object used for synthesis
+static TTSManager ttsManager;      
 
 /******************************************************************************
 * HTSTTS Constructor
@@ -82,13 +82,10 @@ STDMETHODIMP HTSTTS::SetObjectToken(ISpObjectToken* pToken) {
       LOG_DEBUG("Voice text rules: " << (*voiceProperties)[ PROPERTY_KEY_TEXTANALYZER_RULES ]);
    }
 
-   LOG_DEBUG("this: " << this);
-   LOG_DEBUG("ttsmanager: " << &ttsManager);
    //TODO: voice name or other features?
-
    //TODO: preload voice?
 
-   //TODO: check this
+   // yet to be checked:
    //if ((ttwv = feat_val(curr_vox->features, "tokentowords_func"))) {
    //    feat_set(curr_vox->features, "old_tokentowords_func", ttwv);
    //    feat_set(curr_vox->features, "tokentowords_func",
@@ -114,20 +111,14 @@ STDMETHODIMP HTSTTS::GetOutputFormat(const GUID* pTargetFormatId,
                                      GUID* pDesiredFormatId,
                                      WAVEFORMATEX** ppCoMemDesiredWaveFormatEx) {
 
-   //LOG_SETFILE( "C:\\tmplog.txt" );
-   LOG_DEBUG("IN GETOUTPUTFORMAT");
 
-   //TODO: return something reasonable that the synthesizer devliers
-   //                    or resample our synthesized data
-   //                   or tell the synthesizer what to deliver
+   //TODO: return something reasonable that the synthesizer delivers
+   //                     or resample our synthesized data
+   //                     or tell the synthesizer what to deliver
    return SpConvertStreamFormatEnum(SPSF_48kHz16BitMono,
                                     pDesiredFormatId,
                                     ppCoMemDesiredWaveFormatEx);
 
-
-   // Just return the default format for the voice, since SAPI
-   //can do all the necessary conversion.  (our resampling
-   //algorithm is a lot better than SAPI's, though...)
    /*
    if ((wfx = (WAVEFORMATEX *)CoTaskMemAlloc(sizeof(*wfx))) == NULL)
    return E_OUTOFMEMORY;
@@ -176,7 +167,7 @@ HTSTTS::Speak(DWORD dwSpeakFlags,
       FragmentPropertiesPtr props = AdjustProperties(&(curr_frag->State), this->voiceProperties);
 
       switch (curr_frag->State.eAction) {
-      //TODO: change some parameters for spellout/pronounce in text fragment properties
+      //TODO: change some parameters for spellout/pronounce in text fragment properties and handle them
       case SPVA_SpellOut:
          LOG_DEBUG("[Speak] Should spell out something");
       case SPVA_Pronounce:
@@ -186,7 +177,6 @@ HTSTTS::Speak(DWORD dwSpeakFlags,
          LOG_DEBUG("[Speak] Converting text");
 
          if (curr_frag->ulTextLen == 0) {
-            LOG_DEBUG("[Speak] Text with ultextlen 0 encountered");
             continue;
          }
 
@@ -201,7 +191,6 @@ HTSTTS::Speak(DWORD dwSpeakFlags,
             len = WideCharToMultiByte(CP_UTF8, 0, currStart, currlen, NULL, 0, NULL, NULL);
 
             if (len == 0) {
-               LOG_DEBUG("[Speak] Text with len 0 encountered");
                continue;
             }
 
@@ -224,7 +213,7 @@ HTSTTS::Speak(DWORD dwSpeakFlags,
          break;
 
       case SPVA_Silence:
-         LOG_DEBUG("[Speak] Should silence");
+         LOG_DEBUG("[Speak] Should do silence");
          break;
       case SPVA_Bookmark:
          break;
@@ -354,7 +343,7 @@ void HTSTTS::HandleActions(ISpTTSEngineSite* site) {
       if (stype == SPVST_SENTENCE) {
          actionSkipSentences += count;
       }
-      LOG_DEBUG("[HandleActions] We should skip sentences.");
+      LOG_DEBUG("[HandleActions] Skip sentences.");
    }
 
    //- change base speaking rate action
@@ -420,8 +409,6 @@ FragmentPropertiesPtr HTSTTS::AdjustProperties(const SPVSTATE* state, FragmentPr
       return props;
    }
 }
-
-
 
 
 static const double sapi_ratetab_foo[21] = {

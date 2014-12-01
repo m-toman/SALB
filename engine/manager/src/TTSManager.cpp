@@ -30,8 +30,6 @@ TTSManager::~TTSManager() {
 * Synthesize text and return frames.
 **/
 TTSResultPtr TTSManager::SynthesizeText(Text& text) {
-   //      std::lock_guard<std::mutex> lock(objectMutex);
-
    TTSResultPtr results = std::make_shared<TTSResult>();
 
    for (auto it = text.begin() ; it != text.end(); ++it) {
@@ -47,8 +45,6 @@ TTSResultPtr TTSManager::SynthesizeText(Text& text) {
 * Synthesize a text fragment
 **/
 TTSResultPtr TTSManager::SynthesizeTextFragment(const TextFragmentPtr& tf) {
-   //      std::lock_guard<std::mutex> lock(objectMutex);
-
    // feed text to TextAnalyzer, retrieve Labels
    LOG_DEBUG("[TTSManager::SynthesizeTextFragment] Analyzing text fragment.");
    LabelsPtr labels = this->AnalyzeTextFragment(tf);
@@ -65,7 +61,6 @@ TTSResultPtr TTSManager::SynthesizeTextFragment(const TextFragmentPtr& tf) {
 * Synthesize a series of labels
 **/
 TTSResultPtr TTSManager::SynthesizeLabels(const FragmentPropertiesPtr& properties, const LabelsPtr& labels) {
-
    std::string requestedSynthesizer = PROPERTY_VALUE_AUTOMATIC;
 
    FragmentProperties& props = (*properties);
@@ -88,11 +83,8 @@ TTSResultPtr TTSManager::SynthesizeLabels(const FragmentPropertiesPtr& propertie
 * Text analysis on a text fragment, returns resulting labels.
 **/
 LabelsPtr TTSManager::AnalyzeTextFragment(const TextFragmentPtr& tf) {
-
    LOG_DEBUG("[TTSManager::AnalyzeTextFragment] Analyzing Text.");
-
    TextAnalyzerPtr textAnalyzer = GetTextAnalyzer(tf->GetProperties());
-
    LOG_DEBUG("[TTSManager::AnalyzeTextFragment] Call Analyzer.");
    return textAnalyzer->AnalyzeTextFragment(tf);
 }

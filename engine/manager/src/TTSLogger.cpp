@@ -63,7 +63,6 @@ void close_logfile() {
 
 void reopen_logfile() {
    logger.reopen();
-   //LOG_DEBUG( "[TTSLogger] Reopened logfile" );
 }
 
 std::ofstream& get_logfile() {
