@@ -4,3 +4,9 @@
 *.sdf
 *.exp
 salb.opensdf
+*.exe
+*.ilk
+*.pdb
+*.log
+*.obj
+*.idb

@@ -32,6 +32,8 @@
 //               Date:  November 2001                                    //
 ///////////////////////////////////////////////////////////////////////////
 
+#pragma warning(disable: 4996)
+
 #include <atlbase.h>
 #include <stdio.h>
 #include <sphelper.h>
