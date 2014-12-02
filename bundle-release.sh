@@ -10,6 +10,6 @@ mkdir -p $release
 
 # SAPI installer
 makensis sapi/install/install.nsi
-cp sapi/install/htssapi.exe $release/leopold-voice.exe
+cp sapi/install/htssapi.exe $release/leo-voice.exe
 
 
