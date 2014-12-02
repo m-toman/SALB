@@ -32,7 +32,7 @@ echo %CD%
 @echo on
 
 regsvr32 "%CD%\htstts.dll"
-"%CD%\register-voice.exe" "%CD%\leo.htsvoice" "Leopold" "de-at" "male" "adult" "%CD%\leo.log" "%CD%\leo.rules"
+"%CD%\register-voice.exe" "%CD%\leo.htsvoice" "Leo" "de-at" "male" "adult" "%CD%\leo.log" "%CD%\leo.rules"
 
 @echo off
 

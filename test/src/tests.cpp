@@ -264,7 +264,7 @@ class InternalTextAnalyzerTest : public Test {
 
          (*properties)[PROPERTY_KEY_SYNTHESIZER] =  PROPERTY_VALUE_HTSENGINE;            //- use hts_engine as synthesizer
          (*properties)[PROPERTY_KEY_VOICE_PATH]  = "testdata/leo.htsvoice";              //- path to the hts model file
-         (*properties)[PROPERTY_KEY_VOICE_NAME]  = "Leopold";                            //- voice name
+         (*properties)[PROPERTY_KEY_VOICE_NAME]  = "Leo";                            //- voice name
          (*properties)[PROPERTY_KEY_VOLUME]      = "100";                                //- voice volume 0-100
 
          return testLabelGen1();

@@ -67,7 +67,7 @@ int wmain(int argc, WCHAR* argv[]) {
    ISpDataKey* cpDataKeyAttribs;
 
    WCHAR* voicePath = L"C:\\leo.htsvoice";
-   WCHAR* voiceName = L"SALB Leopold";
+   WCHAR* voiceName = L"SALB Leo";
    WCHAR* voiceLang = L"de-at";
    WCHAR* voiceGender = L"male";
    WCHAR* voiceAge = L"Adult";
