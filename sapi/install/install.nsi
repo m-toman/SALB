@@ -81,7 +81,7 @@ Section -FinishSection
 
 SectionEnd
 
-Section "Leopold (Austrian German)" Section1
+Section "Leo (Austrian German)" Section1
 
 	; Set Section properties
 	SetOverwrite on
@@ -92,10 +92,10 @@ Section "Leopold (Austrian German)" Section1
 	File "..\..\data\leo.rules"
 	
 	; Register the new voice
-	Exec '"$INSTDIR\x86\register-voice.exe" "$INSTDIR\leo.htsvoice" "Leopold" "de-at" "male" "adult" "$INSTDIR\x86\leo.log" "$INSTDIR\leo.rules"'
+	Exec '"$INSTDIR\x86\register-voice.exe" "$INSTDIR\leo.htsvoice" "Leo" "de-at" "male" "adult" "$INSTDIR\x86\leo.log" "$INSTDIR\leo.rules"'
 	
 	${If} ${RunningX64}
-		Exec '"$INSTDIR\x64\register-voice.exe" "$INSTDIR\leo.htsvoice" "Leopold" "de-at" "male" "adult" "$INSTDIR\x64\leo.log" "$INSTDIR\leo.rules"'
+		Exec '"$INSTDIR\x64\register-voice.exe" "$INSTDIR\leo.htsvoice" "Leo" "de-at" "male" "adult" "$INSTDIR\x64\leo.log" "$INSTDIR\leo.rules"'
 	${EndIf}		
 	
 SectionEnd
@@ -112,10 +112,10 @@ SectionEnd
 Section Uninstall
 
 	; Unregister voices 
-	Exec '"$INSTDIR\x86\register-voice.exe" "/u" "$INSTDIR\leo.htsvoice" "Leopold" "de-at" "male" "adult" "$INSTDIR\x86\leo.log" "$INSTDIR\leo.rules"'
+	Exec '"$INSTDIR\x86\register-voice.exe" "/u" "$INSTDIR\leo.htsvoice" "Leo" "de-at" "male" "adult" "$INSTDIR\x86\leo.log" "$INSTDIR\leo.rules"'
 	
 	${If} ${RunningX64}
-		Exec '"$INSTDIR\x64\register-voice.exe" "/u" "$INSTDIR\leo.htsvoice" "Leopold" "de-at" "male" "adult" "$INSTDIR\x64\leo.log" "$INSTDIR\leo.rules"'
+		Exec '"$INSTDIR\x64\register-voice.exe" "/u" "$INSTDIR\leo.htsvoice" "Leo" "de-at" "male" "adult" "$INSTDIR\x64\leo.log" "$INSTDIR\leo.rules"'
 	${EndIf}		
 	
 	; ADD NEW VOICE REMOVALS HERE
