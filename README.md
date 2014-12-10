@@ -22,10 +22,7 @@ Also included are an Austrian German male and a Scottish English female voice mo
 
 For information on how to build the system see BUILD.
 
-To train your own voices, you can use the demo packages on
-http://hts.sp.nitech.ac.jp/
-This package currently includes hts_engine 1.08 for synthesis, so 
-you need a (.htsvoice)-model compatible with this version.
+For information on using the system, using a custom voice or adding a new language, see the project wiki at https://github.com/m-toman/SALB/wiki
 
 
 ## Directory structure
@@ -38,7 +35,7 @@ APIs for other language (e.g. python).
 
 ### cli
 
-Command-Line-Interface.
+A command line interface that can be used to synthesize sentences given a model file (and optionally text rules for non-english voice models).
 
 ### data
 
@@ -46,7 +43,12 @@ Voice models and text rules included with the system.
 
 ### sapi
 
-SAPI5 interface code, produces htstts.dll that can be registered as a SAPI5 engine.
+SAPI5 interface code, produces htstts.dll that can be registered as SAPI5 engine.
+
+### sapi/install
+
+Contains a NSI script to create installer packages for SAPI voices.
+install.nsi creates a package for the provided "Leo" voice, but can easily be adapted.
 
 ### engine/text
 
