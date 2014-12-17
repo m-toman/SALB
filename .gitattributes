@@ -1,0 +1,6 @@
+
+# line endings for shell scripts always LF only (cygwin)
+*.sh text eol=lf
+
+# VS solution files with CRLF
+*.sln text eol=crlf
