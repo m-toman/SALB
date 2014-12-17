@@ -26,6 +26,11 @@ namespace htstts {
 #define PROPERTY_KEY_RATE   "rate"                  ///< property defining the synthesis speaking rate (~0.5-2.0)
 #define PROPERTY_KEY_PITCH  "pitch"                 ///< property defining the synthesis pitch (0.0 - no change)
 
+#define PROPERTY_KEY_FRAGMENT_NOSIL_BEGIN  "silbeg"   ///< no silence at beginning of fragment (values: PROPERTY_VALUE_TRUE or PROPERTY_VALUE_FALSE)
+#define PROPERTY_KEY_FRAGMENT_NOSIL_END    "silend"   ///< no silence at end of fragment (values: PROPERTY_VALUE_TRUE or PROPERTY_VALUE_FALSE)
+
+#define PROPERTY_VALUE_TRUE "1"
+#define PROPERTY_VALUE_FALSE "0"
 #define PROPERTY_VALUE_AUTOMATIC "automatic"        ///< property value for automatic choices
 #define PROPERTY_VALUE_FLITE "flite"                ///< property value for flite as text analyzer
 #define PROPERTY_VALUE_INTERNAL "internal"          ///< property value for using the internal text analyzer

@@ -277,8 +277,10 @@ utt::PhrasePtr InternalTextAnalyzer::TextFragmentToPhrase(const TextFragmentPtr&
    std::stringstream inputStream(input);
    std::string tmpword;
 
-   //  TODO: if fragment forbids silence
-   phrase->words.push_back(utt::make_sil_word());
+   //  if fragment forbids silence
+   if (fragment->GetProperties()->find(PROPERTY_KEY_FRAGMENT_NOSIL_BEGIN) == fragment->GetProperties()->end()) {
+      phrase->words.push_back(utt::make_sil_word());
+   }
 
    while (inputStream >> tmpword) {
       // is word a special word?
@@ -309,7 +311,9 @@ utt::PhrasePtr InternalTextAnalyzer::TextFragmentToPhrase(const TextFragmentPtr&
       phrase->words.push_back(word);
    }
 
-   phrase->words.push_back(utt::make_sil_word());
+   if (fragment->GetProperties()->find(PROPERTY_KEY_FRAGMENT_NOSIL_END) == fragment->GetProperties()->end()) {
+      phrase->words.push_back(utt::make_sil_word());
+   }
 
    return phrase;
 }
