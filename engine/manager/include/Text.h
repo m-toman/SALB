@@ -27,7 +27,6 @@ class TextFragment {
       std::string text;                       ///< actual text
 
    public:
-      // TextFragment( const std::string& text, const VoiceDataPtr& voiceData );
       TextFragment(const std::string& text, const FragmentPropertiesPtr& properties);
 
       const std::string& GetText() const {

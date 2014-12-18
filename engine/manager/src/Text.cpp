@@ -25,15 +25,6 @@ Text::~Text() {
 /**
  * TextFragment
  **/
-/*
-TextFragment::TextFragment( const std::string& text  ) {
-    this->text = text;
-    this->properties = FragmentPropertiesPtr(new FragmentProperties());
-}*/
-
-/**
- * TextFragment
- **/
 TextFragment::TextFragment(const std::string& text, const FragmentPropertiesPtr& properties) {
    this->text = text;
    this->properties = properties;

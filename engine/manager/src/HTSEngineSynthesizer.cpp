@@ -33,6 +33,8 @@ HTSEngineSynthesizer::~HTSEngineSynthesizer() {
 **/
 TTSResultPtr HTSEngineSynthesizer::SynthesizeLabels(const FragmentPropertiesPtr& properties, const LabelsPtr& labels) {
 
+   TTSResultPtr result(new TTSResult());
+
    //- no model given?
    if (properties->find(PROPERTY_KEY_VOICE_PATH) == properties->end()) {
       throw PropertyMissingException(PROPERTY_KEY_VOICE_PATH);
@@ -92,35 +94,37 @@ TTSResultPtr HTSEngineSynthesizer::SynthesizeLabels(const FragmentPropertiesPtr&
    }
 
    //- synthesize
-   //- this is a big ugly hack as we need char** instead of std::string
-   //- we currently use an array of pointers to the internal c_str of the label data.
-   //- this is faster but also unsafer than copying it.
-   char** labelData = new char* [ labels->size() ];
-   std::vector<LabelPtr>::iterator it = labels->begin();
-   for (int i = 0; it != labels->end(); ++it, ++i) {
-      LabelPtr lab = *it;
-      labelData[i] = const_cast<char*>(lab->GetAsHTKLabel().c_str());
-   }
 
-   HTS_Engine_synthesize_from_strings(&engine, labelData, labels->size());
-   delete[] labelData;
+   if (labels->size() > 0) {
+      //- this is a big ugly hack as we need char** instead of std::string
+      //- we currently use an array of pointers to the internal c_str of the label data.
+      //- this is faster but also unsafer than copying it.
+      char** labelData = new char* [ labels->size() ];
+      std::vector<LabelPtr>::iterator it = labels->begin();
+      for (int i = 0; it != labels->end(); ++it, ++i) {
+         LabelPtr lab = *it;
+         labelData[i] = const_cast<char*>(lab->GetAsHTKLabel().c_str());
+      }
 
-   //- store result data
-   TTSResultPtr result(new TTSResult());
-   int num_samples = HTS_Engine_get_nsamples(&engine);
-   result->GetFrames().reserve(num_samples);
+      HTS_Engine_synthesize_from_strings(&engine, labelData, labels->size());
 
-   for (int i = 0; i < num_samples; ++i) {
-      result->GetFrames().push_back(HTS_Engine_get_generated_speech(&engine, i));
+      //- store result data
+      int num_samples = HTS_Engine_get_nsamples(&engine);
+      result->GetFrames().reserve(num_samples);
+
+      for (int i = 0; i < num_samples; ++i) {
+         result->GetFrames().push_back(HTS_Engine_get_generated_speech(&engine, i));
+      }
+      delete[] labelData;
+
+      //- store labels
+      // we could add time alignment information to labels here
+      result->GetLabels().insert(result->GetLabels().begin(), labels->begin(), labels->end());
    }
 
    //- store meta information
    // additional meta information in TTS result can be added here.
    result->SetSamplingRate(HTS_Engine_get_sampling_frequency(&engine));
-
-   //- store labels
-   // we could add time alignment information to labels here
-   result->GetLabels().insert(result->GetLabels().begin(), labels->begin(), labels->end());
 
    return result;
 }

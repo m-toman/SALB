@@ -1,8 +1,7 @@
-<// htstts.cpp : Implementation of HTSTTS
+// htstts.cpp : Implementation of HTSTTS
 
 #include "stdafx.h"
 #include "htstts.h"
-
 
 #include "TTSManager.h"
 #include "TTSLogger.h"
@@ -14,10 +13,22 @@ static double ConvertSapiRate(int r);
 
 static TTSManager ttsManager;
 
+#define SAPI_PROPERTY_BOOKMARK "SAPIROPBKMK"
+
+/******************************************************************************
+* Subclass of TextFragment to add some SAPI specific properties.
+******************************************************************************/
+class SAPITextFragment : public TextFragment {
+   public:
+      std::string bookmark;
+};
+
 /******************************************************************************
 * HTSTTS Constructor
 ******************************************************************************/
 HTSTTS::HTSTTS() : voiceProperties(new FragmentProperties()) {
+   (*voiceProperties)[PROPERTY_KEY_FRAGMENT_NOSIL_END] = PROPERTY_VALUE_TRUE;
+   (*voiceProperties)[PROPERTY_KEY_FRAGMENT_NOSIL_BEGIN] = PROPERTY_VALUE_TRUE;
    ResetActions();
 }
 
@@ -164,6 +175,8 @@ HTSTTS::Speak(DWORD dwSpeakFlags,
       ULONG charsLeft = curr_frag->ulTextLen;
       ULONG currlen;
       ULONG FRAG_SIZE = 500;
+
+      // if this fragment has some changed properties for volume/pitch/etc., change the properties, else use voice properties
       FragmentPropertiesPtr props = AdjustProperties(&(curr_frag->State), this->voiceProperties);
 
       switch (curr_frag->State.eAction) {
@@ -172,8 +185,12 @@ HTSTTS::Speak(DWORD dwSpeakFlags,
          LOG_DEBUG("[Speak] Should spell out something");
       case SPVA_Pronounce:
          LOG_DEBUG("[Speak] Should pronounce something");
+      case SPVA_Bookmark:
+         // bookmarks are treated like normal text fragments,
+         // but will set a special property
+         LOG_DEBUG("[Speak] Set a bookmark here");
+         (*props)[SAPI_PROPERTY_BOOKMARK] = std::string((char*)currStart, charsLeft * sizeof(wchar_t)) + std::string("\0");
       case SPVA_Speak:
-
          LOG_DEBUG("[Speak] Converting text");
 
          if (curr_frag->ulTextLen == 0) {
@@ -198,8 +215,6 @@ HTSTTS::Speak(DWORD dwSpeakFlags,
             WideCharToMultiByte(CP_UTF8, 0, currStart,  currlen, tmptext, len, NULL, NULL);
             tmptext[len] = 0;
 
-            //TODO: copy and modify properties if this fragment has specific needs
-
             LOG_DEBUG("[Speak] Text = " << tmptext);
             fullText.push_back(TextFragmentPtr(new TextFragment(tmptext, props)));
 
@@ -214,8 +229,6 @@ HTSTTS::Speak(DWORD dwSpeakFlags,
 
       case SPVA_Silence:
          LOG_DEBUG("[Speak] Should do silence");
-         break;
-      case SPVA_Bookmark:
          break;
       default:
          break;
@@ -235,11 +248,23 @@ HTSTTS::Speak(DWORD dwSpeakFlags,
          break;
       }
 
+      // is this actually a bookmark?
+      //TODO: only send if interest is there
+      if (tf->GetProperties()->find(SAPI_PROPERTY_BOOKMARK) != tf->GetProperties()->end()) {
+         SPEVENT evt;
+         evt.eEventId = SPEI_TTS_BOOKMARK;
+         evt.elParamType = SPET_LPARAM_IS_STRING;
+         evt.ullAudioStreamOffset = 0L;
+         evt.wParam = atol(tf->GetText().c_str());
+         evt.lParam = (LPARAM)((*tf->GetProperties())[SAPI_PROPERTY_BOOKMARK].c_str());
+         (strdup(tf->GetText().c_str()));
+         pOutputSite->AddEvents(&evt, 1);
+         continue;
+      }
+
       LOG_DEBUG("[Speak] Synthesize text fragment");
 
       try {
-         //TODO: modify volume and speaking rate according to live action events for future fragments
-         //      combine it with values from SAPI XML
          TTSResultPtr result = ttsManager.SynthesizeTextFragment(tf);
 
          //TODO: is result->GetSamplingRate() correct?
@@ -349,18 +374,14 @@ void HTSTTS::HandleActions(ISpTTSEngineSite* site) {
    //- change base speaking rate action
    if (actions & SPVES_RATE) {
       long adj;
-
       site->GetRate(&adj);
-
       ttsManager.SetBaseSpeakingRate(ConvertSapiRate(adj));
    }
 
    //- change base volume
    if (actions & SPVES_VOLUME) {
       USHORT adj;
-
       site->GetVolume(&adj);
-
       ttsManager.SetBaseVolume((int)adj);
    }
 }
@@ -377,6 +398,14 @@ FragmentPropertiesPtr HTSTTS::AdjustProperties(const SPVSTATE* state, FragmentPr
 
    //TODO: if( state.EmphAdj )
    //TODO: if( state.PitchAdj.MiddleAdj )
+
+   // bookmark always needs special properties.
+   if (state->eAction == SPVA_Bookmark) {
+      if (newProps == NULL) {
+         newProps = new FragmentProperties(*props);
+      }
+      //(*newProps)[SAPI_PROPERTY_BOOKMARK] = PROPERTY_VALUE_TRUE;
+   }
 
    //- speaking rate changed for this fragment?
    if (state->RateAdj) {
@@ -403,6 +432,8 @@ FragmentPropertiesPtr HTSTTS::AdjustProperties(const SPVSTATE* state, FragmentPr
    //- return either the new properties
    //- or if nothing has changed, the old ones
    if (newProps) {
+      (*newProps)[PROPERTY_KEY_FRAGMENT_NOSIL_END] = PROPERTY_VALUE_TRUE;
+      (*newProps)[PROPERTY_KEY_FRAGMENT_NOSIL_BEGIN] = PROPERTY_VALUE_TRUE;
       return FragmentPropertiesPtr(newProps);
    }
    else {
