@@ -11,3 +11,5 @@ salb.opensdf
 *.obj
 *.idb
 *.md~
+*.lastbuildstate
+*.ipch

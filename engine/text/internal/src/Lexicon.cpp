@@ -39,9 +39,9 @@ void Lexicon::Read(std::istream& in) {
    std::string line;
    in >> tmp;
 
-   if (tmp != "MNCL") {
-      throw FileLoadException("Lexicon");
-   }
+   if (tmp != "MNCL" && tmp != "\xEF\xBB\xBFMNCL") {
+      throw FileLoadException("Lexicon missing MNCL");
+   }   
 
    // one lexicon entry is currently exactly one line
    while (getline(in, line)) {
