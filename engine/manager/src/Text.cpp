@@ -25,8 +25,16 @@ Text::~Text() {
 /**
  * TextFragment
  **/
-TextFragment::TextFragment(const std::string& text, const FragmentPropertiesPtr& properties) {
-   this->text = text;
+TextFragment::TextFragment(const std::string& text, const FragmentPropertiesPtr& properties) {   
+   // check for UTF-8 bom(b) 
+   if (text.size() >= 3 && text[0] == '\xEF' 
+         && text[1] == '\xBB' && text[2] == '\xBF') {
+      this->text = text.substr(3);
+   }
+   else {
+      this->text = text;
+   }
+
    this->properties = properties;
 }
 
