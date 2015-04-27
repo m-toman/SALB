@@ -18,7 +18,7 @@ Backend functionality is provided by
 - hts_engine for parameter generation/synthesis.
 (see COPYING for information on 3rd party libraries)
 
-Also included are an Austrian German male and a Scottish English female voice model.
+Also included are an Austrian German male voice model.
 
 For information on how to build the system see BUILD.
 
