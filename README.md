@@ -1,5 +1,19 @@
 # SALB
 
+## News
+
+### Help wanted
+
+We would be glad to find collaborators working on e.g. the SAPI interface, text analysis or contributing further languages.
+
+### Publication
+
+A paper on SALB will be published in September 2015: 
+M. Toman and M. Pucher. “An Open Source Speech Synthesis Frontend for HTS”. in:
+Proceedings of the 18th International Conference of Text, Speech and Dialogue (TSD).
+Plzen, Czech Republic, 2015, in print
+
+
 ## Description
 
 The SALB system is a software framework for speech synthesis 
@@ -18,7 +32,7 @@ Backend functionality is provided by
 - hts_engine for parameter generation/synthesis.
 (see COPYING for information on 3rd party libraries)
 
-Also included are an Austrian German male voice model.
+Also included is an Austrian German male voice model.
 
 For information on how to build the system see BUILD.
 
