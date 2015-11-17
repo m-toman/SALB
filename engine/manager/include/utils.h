@@ -28,12 +28,22 @@ void save_result_riff(TTSResultPtr& result, const std::string& path);
 #define UTF8_CHAR_LEN( byte ) (( 0xE5000000 >> (( byte >> 3 ) & 0x1e )) & 3 ) + 1
 
 /**
- * lowercase a string, considering utf-8 characters
+ * Lowercase a string, considering utf-8 characters
  * this currently only handles german umlaute
  **/
 void utf8_tolower(std::string& text);
+
+/**
+* Finds the position of the first German Umlaut.
+* Returns std::string::npos if none found.
+**/
 std::string::size_type utf8_find_first_umlaut(const std::string& text);
 
+/**
+* Removes all multibyte UTF-8 characters from text.
+* Returns a new string containing only single-byte characters.
+**/
+std::string utf8_remove_wide(const std::string& text);
 
 }
 

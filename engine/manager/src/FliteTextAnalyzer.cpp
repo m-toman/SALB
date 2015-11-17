@@ -13,6 +13,7 @@
 #include "common.h"
 #include "Text.h"
 #include "Label.h"
+#include "utils.h"
 
 
 #define FLITE_PLUS_HTS_ENGINE
@@ -61,7 +62,8 @@ LabelsPtr FliteTextAnalyzer::AnalyzeTextFragment(const TextFragmentPtr& fragment
    curr_vox = register_cmu_us_kal(NULL);
 
    //- analyze text
-   cst_utterance* curr_utt = flite_synth_text(fragment->GetText().c_str(), curr_vox);
+   cst_utterance* curr_utt = flite_synth_text(
+	   utf8_remove_wide(fragment->GetText()).c_str(), curr_vox);
 
    //- call hook
    if (curr_vox->utt_init) {

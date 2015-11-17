@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <string>
+#include <sstream>
 
 #include "utils.h"
 
@@ -73,6 +74,17 @@ std::string::size_type utf8_find_first_umlaut(const std::string& text) {
       }
    }
    return std::string::npos;
+}
+
+std::string utf8_remove_wide(const std::string& text) {
+   std::stringstream ret;
+
+   for (std::string::size_type i = 0; i < text.length(); i += UTF8_CHAR_LEN(text[i])) {
+      if (UTF8_CHAR_LEN(text[i]) == 1) {
+         ret << text[i];
+      }
+   }
+   return ret.str();
 }
 
 
