@@ -8,10 +8,9 @@ We would be glad to find collaborators working on e.g. the SAPI interface, text 
 
 ### Publication
 
-A paper on SALB will be published in September 2015: 
 M. Toman and M. Pucher. “An Open Source Speech Synthesis Frontend for HTS”. in:
 Proceedings of the 18th International Conference of Text, Speech and Dialogue (TSD).
-Plzen, Czech Republic, 2015, in print
+Plzen, Czech Republic, 2015, pp. 291-298 
 
 
 ## Description
@@ -82,7 +81,7 @@ Used as an interface for frontends (sapi, cli, api) or directly as API.
 
 ## Coding style guideline
 
-- Code formatting is done using astyle (http://astyle.sourceforge.net/) using the provided astyle config file (astyle.config)
+- Code formatting is done using astyle (http://astyle.sourceforge.net/) using the provided astyle config file (astyle.config): astyle --options=astyle.config .cpp .h
 - Naming conventions for classes and methods:
   Classes and methods in CamelCase with first character uppercase (class FooBar { void GetStuff(); };)
   Member variables camelCase with first character lowercase (int someVal;)
