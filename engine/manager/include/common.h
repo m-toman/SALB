@@ -13,6 +13,7 @@
 #include <vector>
 #include <unordered_map>
 #include <exception>
+#include <sstream>
 
 namespace htstts {
 
@@ -47,6 +48,45 @@ namespace htstts {
 class FragmentProperties : public std::unordered_map<std::string, std::string> {
    public:
       FragmentProperties() {}
+
+      std::string Serialize() {
+         std::ostringstream ostr;
+         for (auto const& p : *this) {
+            ostr << "|" << p.first << "=" << p.second;
+         }
+         return ostr.str();
+      }
+
+      bool Exists(const std::string& key) const {
+         return find(key) != end();
+      }
+
+      /**
+      * Returns the value for key as std::string.
+      * If key does not exist, returns defaultValue
+      **/
+      const std::string& Get(const std::string& key, const std::string& defaultValue) const {
+         if (find(key) != end()) {
+            return at(key);
+         }
+         return defaultValue;
+      }
+
+      /**
+      * Returns the value for key as type T.
+      * If key does not exist or can not be converted, returns defaultValue.
+      **/
+      template<typename T> T GetAs(const std::string& key, T defaultValue) const {
+         if (find(key) != end()) {
+            std::istringstream i(at(key));
+            i.imbue(std::locale::classic());
+            T val;
+            if (i >> val) {
+               return val;
+            }
+         }
+         return defaultValue;
+      }
 };
 typedef std::shared_ptr<FragmentProperties> FragmentPropertiesPtr;
 
