@@ -4,7 +4,8 @@
 
 ### Current state of the project
 
-As the world of speech synthesis moved on to Deep Learning, I'd recommend checking out the Merlin project: https://github.com/CSTR-Edinburgh/merlin
+As the world of speech synthesis moved on to Deep Learning, I recommend checking out the Merlin project: https://github.com/CSTR-Edinburgh/merlin
+
 Integration of the Merlin DNN voices into the SALB framework is possible but requires some work. Unfortunately the code for this is proprietary and therefore not available here.
 
 ### Publication
