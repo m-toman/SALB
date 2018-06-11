@@ -39,7 +39,7 @@ public class TTSEngine {
 
 	public synchronized void synthesize(String txt) {
 
-		short[] cache = nativeSynthesize(txt, MODEL_FREQUENCY, modelPath);
+		short[] cache = nativeSynthesize(txt, "1.0", modelPath);
 
 		AudioTrack audioTrack = new AudioTrack(
 				AudioManager.STREAM_MUSIC,
