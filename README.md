@@ -4,9 +4,7 @@
 
 ### Current state of the project
 
-As the world of speech synthesis moved on to Deep Learning, I recommend checking out the Merlin project: https://github.com/CSTR-Edinburgh/merlin
-
-Integration of the Merlin DNN voices into the SALB framework is possible but requires some work. Unfortunately the code for this is proprietary and therefore not available here.
+As the world of speech synthesis moved on to Deep Learning, I recommend checking out projects like Mozilla TTS, the Nvidia Tacotron 2 implementation or similar. 
 
 ### Publication
 
