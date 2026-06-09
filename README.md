@@ -4,7 +4,7 @@
 
 ### Current state of the project
 
-As the world of speech synthesis moved on to Deep Learning, I recommend checking out projects like Mozilla TTS, the Nvidia Tacotron 2 implementation or similar. 
+As the world of speech synthesis moved on I would recommend checking more recent methods and frameworks. 
 
 ### Publication
 
